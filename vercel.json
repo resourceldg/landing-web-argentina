@@ -1,0 +1,10 @@
+{
+  "rewrites": [
+    { "source": "/profesionales", "destination": "/index.html" },
+    { "source": "/regalo", "destination": "/index.html" },
+    { "source": "/instagram-a-web", "destination": "/index.html" },
+    { "source": "/whatsapp", "destination": "/index.html" },
+    { "source": "/web-50k", "destination": "/index.html" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}

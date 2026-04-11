@@ -1,0 +1,11 @@
+export { default as Header } from './Header';
+export { default as Footer } from './Footer';
+export { default as WhatsAppButton } from './WhatsAppButton';
+export { default as HeroSection } from './HeroSection';
+export { default as PainPointsSection } from './PainPointsSection';
+export { default as BenefitsSection } from './BenefitsSection';
+export { default as ProcessSection } from './ProcessSection';
+export { default as PricingSection } from './PricingSection';
+export { default as PricingCards } from './PricingCards';
+export { default as FAQSection } from './FAQSection';
+export { default as CTASection } from './CTASection';
