@@ -1,4 +1,5 @@
 import { ArrowRight, Play, Check, MessageCircle, Clock, Sparkles, Zap, Star } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 
 interface HeroSectionProps {
@@ -46,7 +47,7 @@ export default function HeroSection({
         <img
           src="/profesional-web.jpg"
           alt="Profesionales con su web personal"
-          className="w-full h-full object-cover object-top"
+          className="w-full h-full object-cover object-top grayscale"
         />
         {/* Gradient overlay: oscuro arriba, muy oscuro abajo para legibilidad */}
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900/70 via-slate-900/75 to-slate-900/92" />
@@ -204,7 +205,7 @@ export default function HeroSection({
                   {secondaryCta}
                 </Button>
               </button>
-              <a href="#/ejemplos">
+              <Link to="/ejemplos">
                 <Button
                   size="lg"
                   variant="outline"
@@ -216,7 +217,7 @@ export default function HeroSection({
                   </svg>
                   Ver ejemplos
                 </Button>
-              </a>
+              </Link>
             </div>
 
             {/* CTAs mobile secundarios */}
@@ -230,7 +231,7 @@ export default function HeroSection({
                   {secondaryCta}
                 </Button>
               </button>
-              <a href="#/ejemplos" className="flex-1">
+              <Link to="/ejemplos" className="flex-1">
                 <Button
                   size="lg"
                   className="w-full border-2 border-white/30 bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 px-4 py-4 text-sm rounded-xl"
@@ -241,7 +242,7 @@ export default function HeroSection({
                   </svg>
                   Ejemplos
                 </Button>
-              </a>
+              </Link>
             </div>
 
             {/* Trust indicators desktop */}
@@ -263,20 +264,20 @@ export default function HeroSection({
             <div className="hidden lg:block pt-4 border-t border-slate-200">
               <p className="text-sm text-slate-500 mb-3">Ver ejemplos de webs:</p>
               <div className="flex flex-wrap gap-3">
-                <a
-                  href="#/ejemplo/psicologa"
+                <Link
+                  to="/ejemplo/psicologa"
                   className="inline-flex items-center gap-2 bg-slate-100 hover:bg-blue-100 text-slate-700 hover:text-blue-700 px-4 py-2 rounded-full text-sm font-medium transition-colors"
                 >
                   <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
                   Psicóloga
-                </a>
-                <a
-                  href="#/ejemplo/nutricionista"
+                </Link>
+                <Link
+                  to="/ejemplo/nutricionista"
                   className="inline-flex items-center gap-2 bg-slate-100 hover:bg-green-100 text-slate-700 hover:text-green-700 px-4 py-2 rounded-full text-sm font-medium transition-colors"
                 >
                   <span className="w-2 h-2 bg-green-500 rounded-full"></span>
                   Nutricionista
-                </a>
+                </Link>
               </div>
             </div>
 
@@ -284,20 +285,20 @@ export default function HeroSection({
             <div className="lg:hidden pt-3 border-t border-white/20">
               <p className="text-xs text-white/50 mb-2">Ver ejemplos:</p>
               <div className="flex flex-wrap gap-2">
-                <a
-                  href="#/ejemplo/psicologa"
+                <Link
+                  to="/ejemplo/psicologa"
                   className="inline-flex items-center gap-1.5 bg-white/10 border border-white/20 text-white/80 px-3 py-1.5 rounded-full text-xs font-medium transition-colors hover:bg-white/20"
                 >
                   <span className="w-1.5 h-1.5 bg-blue-400 rounded-full"></span>
                   Psicóloga
-                </a>
-                <a
-                  href="#/ejemplo/nutricionista"
+                </Link>
+                <Link
+                  to="/ejemplo/nutricionista"
                   className="inline-flex items-center gap-1.5 bg-white/10 border border-white/20 text-white/80 px-3 py-1.5 rounded-full text-xs font-medium transition-colors hover:bg-white/20"
                 >
                   <span className="w-1.5 h-1.5 bg-green-400 rounded-full"></span>
                   Nutricionista
-                </a>
+                </Link>
               </div>
             </div>
           </div>
