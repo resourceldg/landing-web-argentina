@@ -54,7 +54,7 @@ const ejemplos: Ejemplo[] = [
     descripcion: 'Web para médico especialista con tratamientos y turnos online.',
     color: 'pink',
     route: '/ejemplo/dermatologa',
-    imagen: '/profesional-web.jpg',
+    imagen: '/ejemplo-dermatologa.jpg',
     caracteristicas: ['Tratamientos', 'Turnos', 'Sobre mí', 'Contacto'],
     plan: 'Premium',
     precio: 'ARS 300.000'
@@ -65,7 +65,7 @@ const ejemplos: Ejemplo[] = [
     descripcion: 'Web para contador con servicios para empresas y particulares.',
     color: 'indigo',
     route: '/ejemplo/contador',
-    imagen: '/profesional-web.jpg',
+    imagen: '/ejemplo-contador.jpg',
     caracteristicas: ['Servicios', 'Clientes', 'Sobre mí', 'Contacto'],
     plan: 'Inicio',
     precio: 'ARS 50.000'
@@ -76,7 +76,7 @@ const ejemplos: Ejemplo[] = [
     descripcion: 'Web para coach con programas, testimonios y agenda de sesiones.',
     color: 'purple',
     route: '/ejemplo/coach',
-    imagen: '/profesional-web.jpg',
+    imagen: '/ejemplo-coach.jpg',
     caracteristicas: ['Programas', 'Testimonios', 'Sobre mí', 'Contacto'],
     plan: 'Premium',
     precio: 'ARS 300.000'
