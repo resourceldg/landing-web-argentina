@@ -43,7 +43,7 @@ const ejemplos: Ejemplo[] = [
     descripcion: 'Web para estudio de abogados con especialidades y áreas de práctica.',
     color: 'slate',
     route: '/ejemplo/abogado',
-    imagen: '/profesional-web.jpg',
+    imagen: '/ejemplo-abogado.jpg',
     caracteristicas: ['Especialidades', 'Equipo', 'Casos', 'Contacto'],
     plan: 'Inicio',
     precio: 'ARS 50.000'
