@@ -1,4 +1,5 @@
 import { MessageCircle } from 'lucide-react';
+import { trackWhatsAppClick } from '@/lib/analytics';
 
 interface WhatsAppButtonProps {
   message?: string;
@@ -18,6 +19,7 @@ export default function WhatsAppButton({
       target="_blank"
       rel="noopener noreferrer"
       className="fixed bottom-6 right-6 z-50 group"
+      onClick={() => trackWhatsAppClick('floating_button', message)}
     >
       <div className="relative">
         {/* Pulse animation */}

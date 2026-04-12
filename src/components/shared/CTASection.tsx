@@ -1,4 +1,5 @@
 import { ArrowRight, MessageCircle } from 'lucide-react';
+import { trackWhatsAppClick } from '@/lib/analytics';
 import { Button } from '@/components/ui/button';
 
 interface CTASectionProps {
@@ -50,7 +51,9 @@ export default function CTASection({
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+          <a href={whatsappUrl} target="_blank" rel="noopener noreferrer"
+            onClick={() => trackWhatsAppClick('cta_primary', whatsappMessage)}
+          >
             <Button 
               size="lg" 
               className={`px-8 py-6 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5 ${
@@ -64,7 +67,9 @@ export default function CTASection({
             </Button>
           </a>
           
-          <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+          <a href={whatsappUrl} target="_blank" rel="noopener noreferrer"
+            onClick={() => trackWhatsAppClick('cta_secondary', whatsappMessage)}
+          >
             <Button 
               size="lg" 
               variant={variant === 'default' ? 'outline' : 'ghost'}

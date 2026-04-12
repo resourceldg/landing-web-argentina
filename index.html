@@ -1,9 +1,19 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Web Express Profesional</title>
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9GTZ1HTB16"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      // La config final la maneja analytics.ts para evitar doble page_view
+      gtag('config', 'G-9GTZ1HTB16', { send_page_view: false });
+    </script>
   </head>
   <body>
     <div id="root"></div>

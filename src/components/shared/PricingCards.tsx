@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Check, Star, Zap, Crown, ArrowRight, MessageCircle, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { trackPlanClick } from '@/lib/analytics';
 
 interface Plan {
   name: string;
@@ -223,7 +224,9 @@ export default function PricingCards({
                         </li>
                       ))}
                     </ul>
-                    <a href={waUrl} target="_blank" rel="noopener noreferrer" className="block">
+                    <a href={waUrl} target="_blank" rel="noopener noreferrer" className="block"
+                      onClick={() => trackPlanClick(plan.name, plan.price)}
+                    >
                       <Button
                         className={`w-full py-5 rounded-xl font-semibold ${
                           plan.highlighted
@@ -300,6 +303,7 @@ export default function PricingCards({
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block"
+                onClick={() => trackPlanClick(plan.name, plan.price)}
               >
                 <Button
                   className={`w-full py-6 rounded-xl font-semibold ${
