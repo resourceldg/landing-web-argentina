@@ -1,4 +1,5 @@
 import { Phone, MapPin, Mail, Check, MessageCircle, Scale, FileText, Users, Building } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import ExamplesNav from './ExamplesNav';
 
@@ -7,11 +8,11 @@ export default function AbogadoExample() {
 
   return (
     <div className="min-h-screen bg-white">
-      <ExamplesNav 
+      <ExamplesNav
         currentExample="abogado"
-        prevExample="#/ejemplo/nutricionista"
+        prevRoute="/ejemplo/nutricionista"
         prevLabel="Nutricionista"
-        nextExample="#/ejemplo/dermatologa"
+        nextRoute="/ejemplo/dermatologa"
         nextLabel="Dermatóloga"
       />
 
@@ -57,13 +58,12 @@ export default function AbogadoExample() {
               </div>
             </div>
             <div className="relative">
-              <div className="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl bg-slate-200 flex items-center justify-center">
-                <div className="text-center p-12">
-                  <div className="w-32 h-32 bg-slate-700 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <Scale className="w-16 h-16 text-white" />
-                  </div>
-                  <p className="text-slate-500 text-lg">Estudio Jurídico</p>
-                </div>
+              <div className="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
+                <img
+                  src="/ejemplo-abogado.jpg"
+                  alt="Estudio Jurídico Pérez"
+                  className="w-full h-full object-cover object-top"
+                />
               </div>
             </div>
           </div>
@@ -145,7 +145,7 @@ export default function AbogadoExample() {
 
       <footer className="bg-slate-900 text-slate-400 py-8">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-sm">Este es un ejemplo de web creada con WebExpress - <a href="#/" className="text-slate-300 hover:text-white">Quiero una como esta</a></p>
+          <p className="text-sm">Este es un ejemplo de web creada con WebExpress - <Link to="/" className="text-slate-300 hover:text-white">Quiero una como esta</Link></p>
         </div>
       </footer>
     </div>

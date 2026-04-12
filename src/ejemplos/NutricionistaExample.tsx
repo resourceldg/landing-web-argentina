@@ -1,4 +1,5 @@
 import { Phone, MapPin, Mail, Check, Star, MessageCircle, Apple, Heart, TrendingUp } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import ExamplesNav from './ExamplesNav';
 
@@ -8,11 +9,11 @@ export default function NutricionistaExample() {
   return (
     <div className="min-h-screen bg-white">
       {/* Navegación de ejemplos */}
-      <ExamplesNav 
+      <ExamplesNav
         currentExample="nutricionista"
-        prevExample="#/ejemplo/psicologa"
+        prevRoute="/ejemplo/psicologa"
         prevLabel="Psicóloga"
-        nextExample="#/ejemplo/abogado"
+        nextRoute="/ejemplo/abogado"
         nextLabel="Abogado"
       />
 
@@ -88,19 +89,19 @@ export default function NutricionistaExample() {
                 icon: <Heart className="w-8 h-8 text-red-500" />,
                 title: 'Nutrición Clínica',
                 description: 'Planes para diabetes, hipertensión, colesterol alto, y otras condiciones de salud.',
-                price: 'Consulta $12.000'
+                price: 'Consulta $38.000'
               },
               {
                 icon: <TrendingUp className="w-8 h-8 text-blue-500" />,
                 title: 'Nutrición Deportiva',
                 description: 'Optimizá tu rendimiento con un plan diseñado para tu deporte y objetivos.',
-                price: 'Consulta $15.000'
+                price: 'Consulta $45.000'
               },
               {
                 icon: <Apple className="w-8 h-8 text-green-500" />,
                 title: 'Control de Peso',
                 description: 'Perdé peso de forma saludable y sostenible, sin dietas restrictivas.',
-                price: 'Consulta $12.000'
+                price: 'Consulta $38.000'
               }
             ].map((servicio, index) => (
               <div key={index} className="bg-slate-50 rounded-2xl p-6 hover:shadow-lg transition-shadow text-center">
@@ -265,7 +266,7 @@ export default function NutricionistaExample() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-sm">
             Este es un ejemplo de web creada con WebExpress -{' '}
-            <a href="#/" className="text-green-400 hover:text-green-300">Quiero una como esta</a>
+            <Link to="/" className="text-green-400 hover:text-green-300">Quiero una como esta</Link>
           </p>
         </div>
       </footer>

@@ -1,4 +1,5 @@
 import { Phone, MapPin, Mail, Check, Star, MessageCircle, Calculator, TrendingUp, FileText, Building2 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import ExamplesNav from './ExamplesNav';
 
@@ -7,11 +8,11 @@ export default function ContadorExample() {
 
   return (
     <div className="min-h-screen bg-white">
-      <ExamplesNav 
+      <ExamplesNav
         currentExample="contador"
-        prevExample="#/ejemplo/dermatologa"
+        prevRoute="/ejemplo/dermatologa"
         prevLabel="Dermatóloga"
-        nextExample="#/ejemplo/coach"
+        nextRoute="/ejemplo/coach"
         nextLabel="Coach"
       />
 
@@ -57,13 +58,12 @@ export default function ContadorExample() {
               </div>
             </div>
             <div className="relative">
-              <div className="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl bg-indigo-100 flex items-center justify-center">
-                <div className="text-center p-12">
-                  <div className="w-32 h-32 bg-indigo-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <Calculator className="w-16 h-16 text-white" />
-                  </div>
-                  <p className="text-indigo-600 text-lg">Estudio Contable</p>
-                </div>
+              <div className="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
+                <img
+                  src="/ejemplo-contador.jpg"
+                  alt="Contador Sergio Díaz"
+                  className="w-full h-full object-cover object-top"
+                />
               </div>
             </div>
           </div>
@@ -147,7 +147,7 @@ export default function ContadorExample() {
 
       <footer className="bg-slate-900 text-slate-400 py-8">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-sm">Este es un ejemplo de web creada con WebExpress - <a href="#/" className="text-indigo-400 hover:text-indigo-300">Quiero una como esta</a></p>
+          <p className="text-sm">Este es un ejemplo de web creada con WebExpress - <Link to="/" className="text-indigo-400 hover:text-indigo-300">Quiero una como esta</Link></p>
         </div>
       </footer>
     </div>

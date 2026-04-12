@@ -1,4 +1,5 @@
-import { Phone, MapPin, Mail, Check, Sparkles, Heart, Calendar } from 'lucide-react';
+import { Phone, MapPin, Mail, Check, Sparkles, Calendar } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import ExamplesNav from './ExamplesNav';
 
@@ -7,11 +8,11 @@ export default function DermatologaExample() {
 
   return (
     <div className="min-h-screen bg-white">
-      <ExamplesNav 
+      <ExamplesNav
         currentExample="dermatologa"
-        prevExample="#/ejemplo/abogado"
+        prevRoute="/ejemplo/abogado"
         prevLabel="Abogado"
-        nextExample="#/ejemplo/contador"
+        nextRoute="/ejemplo/contador"
         nextLabel="Contador"
       />
 
@@ -57,13 +58,12 @@ export default function DermatologaExample() {
               </div>
             </div>
             <div className="relative">
-              <div className="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl bg-pink-100 flex items-center justify-center">
-                <div className="text-center p-12">
-                  <div className="w-32 h-32 bg-pink-400 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <Heart className="w-16 h-16 text-white" />
-                  </div>
-                  <p className="text-pink-600 text-lg">Dermatología</p>
-                </div>
+              <div className="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
+                <img
+                  src="/ejemplo-dermatologa.jpg"
+                  alt="Dra. Carolina Ruiz - Dermatóloga"
+                  className="w-full h-full object-cover object-top"
+                />
               </div>
             </div>
           </div>
@@ -158,7 +158,7 @@ export default function DermatologaExample() {
 
       <footer className="bg-slate-900 text-slate-400 py-8">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-sm">Este es un ejemplo de web creada con WebExpress - <a href="#/" className="text-pink-400 hover:text-pink-300">Quiero una como esta</a></p>
+          <p className="text-sm">Este es un ejemplo de web creada con WebExpress - <Link to="/" className="text-pink-400 hover:text-pink-300">Quiero una como esta</Link></p>
         </div>
       </footer>
     </div>

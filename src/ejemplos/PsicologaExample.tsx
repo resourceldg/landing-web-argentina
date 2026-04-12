@@ -1,4 +1,5 @@
 import { Phone, MapPin, Mail, Check, Star, MessageCircle } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import ExamplesNav from './ExamplesNav';
 
@@ -8,11 +9,11 @@ export default function PsicologaExample() {
   return (
     <div className="min-h-screen bg-white">
       {/* Navegación de ejemplos */}
-      <ExamplesNav 
+      <ExamplesNav
         currentExample="psicologa"
-        prevExample="#/ejemplo/coach"
+        prevRoute="/ejemplo/coach"
         prevLabel="Coach"
-        nextExample="#/ejemplo/nutricionista"
+        nextRoute="/ejemplo/nutricionista"
         nextLabel="Nutricionista"
       />
 
@@ -87,17 +88,17 @@ export default function PsicologaExample() {
               {
                 title: 'Terapia Individual',
                 description: 'Sesiones personalizadas para adultos. Un espacio para trabajar en tu bienestar emocional.',
-                price: 'Desde $15.000'
+                price: 'Desde $45.000'
               },
               {
                 title: 'Terapia de Pareja',
                 description: 'Acompañamiento para mejorar la comunicación y resolver conflictos en la relación.',
-                price: 'Desde $20.000'
+                price: 'Desde $65.000'
               },
               {
                 title: 'Terapia Online',
                 description: 'Sesiones virtuales desde la comodidad de tu hogar. Misma calidad, más flexibilidad.',
-                price: 'Desde $12.000'
+                price: 'Desde $40.000'
               }
             ].map((servicio, index) => (
               <div key={index} className="bg-slate-50 rounded-2xl p-6 hover:shadow-lg transition-shadow">
@@ -257,7 +258,7 @@ export default function PsicologaExample() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-sm">
             Este es un ejemplo de web creada con WebExpress -{' '}
-            <a href="#/" className="text-blue-400 hover:text-blue-300">Quiero una como esta</a>
+            <Link to="/" className="text-blue-400 hover:text-blue-300">Quiero una como esta</Link>
           </p>
         </div>
       </footer>
