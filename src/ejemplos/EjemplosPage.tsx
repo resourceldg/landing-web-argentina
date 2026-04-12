@@ -8,7 +8,7 @@ interface Ejemplo {
   descripcion: string;
   color: string;
   route: string;
-  imagen: string | null;
+  imagen: string;
   caracteristicas: string[];
   plan: 'Inicio' | 'Profesional' | 'Premium';
   precio: string;
@@ -43,7 +43,7 @@ const ejemplos: Ejemplo[] = [
     descripcion: 'Web para estudio de abogados con especialidades y áreas de práctica.',
     color: 'slate',
     route: '/ejemplo/abogado',
-    imagen: null,
+    imagen: '/profesional-web.jpg',
     caracteristicas: ['Especialidades', 'Equipo', 'Casos', 'Contacto'],
     plan: 'Inicio',
     precio: 'ARS 50.000'
@@ -54,7 +54,7 @@ const ejemplos: Ejemplo[] = [
     descripcion: 'Web para médico especialista con tratamientos y turnos online.',
     color: 'pink',
     route: '/ejemplo/dermatologa',
-    imagen: null,
+    imagen: '/profesional-web.jpg',
     caracteristicas: ['Tratamientos', 'Turnos', 'Sobre mí', 'Contacto'],
     plan: 'Premium',
     precio: 'ARS 300.000'
@@ -65,7 +65,7 @@ const ejemplos: Ejemplo[] = [
     descripcion: 'Web para contador con servicios para empresas y particulares.',
     color: 'indigo',
     route: '/ejemplo/contador',
-    imagen: null,
+    imagen: '/profesional-web.jpg',
     caracteristicas: ['Servicios', 'Clientes', 'Sobre mí', 'Contacto'],
     plan: 'Inicio',
     precio: 'ARS 50.000'
@@ -76,7 +76,7 @@ const ejemplos: Ejemplo[] = [
     descripcion: 'Web para coach con programas, testimonios y agenda de sesiones.',
     color: 'purple',
     route: '/ejemplo/coach',
-    imagen: null,
+    imagen: '/profesional-web.jpg',
     caracteristicas: ['Programas', 'Testimonios', 'Sobre mí', 'Contacto'],
     plan: 'Premium',
     precio: 'ARS 300.000'
@@ -159,29 +159,18 @@ export default function EjemplosPage() {
               return (
                 <div
                   key={index}
-                  className={`rounded-2xl border ${colors.border} bg-white overflow-hidden shadow-sm`}
+                  className={`relative rounded-2xl border ${colors.border} bg-white overflow-hidden shadow-sm active:scale-[0.99] transition-transform`}
                 >
-                  {/* Imagen o placeholder */}
-                  <div className="relative h-36 overflow-hidden">
-                    {ejemplo.imagen ? (
-                      <img
-                        src={ejemplo.imagen}
-                        alt={ejemplo.profesion}
-                        className="w-full h-full object-cover object-top"
-                      />
-                    ) : (
-                      <div className={`w-full h-full ${colors.bg} flex items-center justify-center`}>
-                        <div className="text-center">
-                          <div className={`w-14 h-14 ${colors.accent} rounded-full flex items-center justify-center mx-auto mb-2`}>
-                            <span className="text-white text-2xl font-bold">
-                              {ejemplo.nombre.charAt(0)}
-                            </span>
-                          </div>
-                          <p className={`${colors.text} text-xs font-medium`}>{ejemplo.profesion}</p>
-                        </div>
-                      </div>
-                    )}
+                  {/* Link que cubre toda la card */}
+                  <Link to={ejemplo.route} className="absolute inset-0 z-10" aria-label={`Ver ejemplo ${ejemplo.profesion}`} />
 
+                  {/* Imagen */}
+                  <div className="relative h-36 overflow-hidden">
+                    <img
+                      src={ejemplo.imagen}
+                      alt={ejemplo.profesion}
+                      className="w-full h-full object-cover object-top"
+                    />
                     {/* Badge plan superpuesto */}
                     <div className="absolute top-2 left-2">
                       <span className={`inline-flex items-center gap-1 ${plan.color} text-xs font-bold px-2 py-1 rounded-full`}>
@@ -218,21 +207,18 @@ export default function EjemplosPage() {
                       ))}
                     </div>
 
-                    {/* CTAs */}
-                    <div className="flex gap-2">
-                      <Link to={ejemplo.route} className="flex-1">
-                        <Button variant="outline" className={`w-full text-sm py-2 ${colors.border} ${colors.text}`}>
-                          <Eye className="w-3.5 h-3.5 mr-1.5" />
-                          Ver ejemplo
-                        </Button>
-                      </Link>
-                      <a href={waMsg} target="_blank" rel="noopener noreferrer" className="flex-1">
-                        <Button className={`w-full text-sm py-2 ${colors.accent} text-white hover:opacity-90`}>
-                          <MessageCircle className="w-3.5 h-3.5 mr-1.5" />
-                          Lo quiero
-                        </Button>
-                      </a>
-                    </div>
+                    {/* CTA "Lo quiero" con z-20 para que capture el tap por encima del link de la card */}
+                    <a
+                      href={waMsg}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="relative z-20 block"
+                    >
+                      <Button className={`w-full text-sm py-2 ${colors.accent} text-white hover:opacity-90`}>
+                        <MessageCircle className="w-3.5 h-3.5 mr-1.5" />
+                        Lo quiero · {ejemplo.precio}
+                      </Button>
+                    </a>
                   </div>
                 </div>
               );
@@ -249,28 +235,18 @@ export default function EjemplosPage() {
               return (
                 <div
                   key={index}
-                  className={`${colors.bg} rounded-3xl overflow-hidden border ${colors.border} hover:shadow-xl transition-shadow`}
+                  className={`relative ${colors.bg} rounded-3xl overflow-hidden border ${colors.border} hover:shadow-xl transition-shadow cursor-pointer`}
                 >
+                  {/* Link que cubre toda la card */}
+                  <Link to={ejemplo.route} className="absolute inset-0 z-10" aria-label={`Ver ejemplo ${ejemplo.profesion}`} />
+
                   {/* Imagen */}
                   <div className="aspect-[4/3] relative overflow-hidden">
-                    {ejemplo.imagen ? (
-                      <img
-                        src={ejemplo.imagen}
-                        alt={ejemplo.profesion}
-                        className="w-full h-full object-cover object-top"
-                      />
-                    ) : (
-                      <div className={`absolute inset-0 ${colors.bg} flex items-center justify-center`}>
-                        <div className="text-center p-8">
-                          <div className={`w-20 h-20 ${colors.accent} rounded-full flex items-center justify-center mx-auto mb-4`}>
-                            <span className="text-white text-2xl font-bold">
-                              {ejemplo.nombre.charAt(0)}
-                            </span>
-                          </div>
-                          <p className={`${colors.text} font-semibold`}>{ejemplo.profesion}</p>
-                        </div>
-                      </div>
-                    )}
+                    <img
+                      src={ejemplo.imagen}
+                      alt={ejemplo.profesion}
+                      className="w-full h-full object-cover object-top"
+                    />
                     {/* Plan badge */}
                     <div className="absolute top-3 left-3">
                       <span className={`inline-flex items-center gap-1.5 ${plan.color} text-xs font-bold px-3 py-1.5 rounded-full shadow`}>
@@ -298,13 +274,11 @@ export default function EjemplosPage() {
                         </span>
                       ))}
                     </div>
-                    <div className="flex gap-3">
-                      <Link to={ejemplo.route} className="flex-1">
-                        <Button variant="outline" className={`w-full ${colors.border} ${colors.text} hover:opacity-80`}>
-                          <Eye className="w-4 h-4 mr-2" />
-                          Ver ejemplo
-                        </Button>
-                      </Link>
+                    <div className="relative z-20 flex gap-3">
+                      <div className="flex-1 flex items-center gap-2 text-sm font-medium text-slate-500">
+                        <Eye className="w-4 h-4" />
+                        Clickeá para ver el ejemplo
+                      </div>
                       <a href={waMsg} target="_blank" rel="noopener noreferrer">
                         <Button className={`${colors.accent} text-white hover:opacity-90`}>
                           <MessageCircle className="w-4 h-4" />
