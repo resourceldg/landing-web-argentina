@@ -1,3 +1,4 @@
+import { trackFAQToggle } from '@/lib/analytics';
 import { HelpCircle } from 'lucide-react';
 import {
   Accordion,
@@ -71,7 +72,20 @@ export default function FAQSection({
           <p className="text-xl text-slate-600">{subtitle}</p>
         </div>
 
-        <Accordion type="single" collapsible className="space-y-4">
+        <Accordion 
+          type="single" 
+          collapsible 
+          className="space-y-4"
+          onValueChange={(value) => {
+            if (value) {
+              const index = parseInt(value.replace('item-', ''), 10);
+              const openedItem = items[index];
+              if (openedItem) {
+                trackFAQToggle(openedItem.question, 'open');
+              }
+            }
+          }}
+        >
           {items.map((item, index) => (
             <AccordionItem 
               key={index} 

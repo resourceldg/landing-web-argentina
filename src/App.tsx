@@ -1,5 +1,6 @@
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import ScrollToTop from './components/ScrollToTop';
+import GlobalAnalytics from './components/GlobalAnalytics';
 import HomeLanding from './landings/HomeLanding';
 import ProfesionalesLanding from './landings/ProfesionalesLanding';
 import RegaloLanding from './landings/RegaloLanding';
@@ -18,6 +19,7 @@ function App() {
   return (
     <HashRouter>
       <ScrollToTop />
+      <GlobalAnalytics />
       <Routes>
         <Route path="/" element={<HomeLanding />} />
         <Route path="/profesionales" element={<ProfesionalesLanding />} />

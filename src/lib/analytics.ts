@@ -52,38 +52,77 @@ export function trackEvent(
   window.gtag('event', eventName, params ?? {});
 }
 
-// ── Eventos específicos del negocio ──────────────────────────────────────────
+// ── Eventos de Engagement / Embudos Avanzados ───────────────────────────────
 
 /**
- * Click a WhatsApp — el evento más importante.
- * @param source  Dónde estaba el botón: 'floating_button' | 'cta_section' | 'hero' | 'header' | 'pricing'
- * @param message Texto pre-cargado en el chat
+ * Scroll Depth - Saber hasta dónde baja el usuario en la página.
  */
-export function trackWhatsAppClick(source: string, message?: string): void {
-  trackEvent('whatsapp_click', {
+export function trackScrollDepth(percentScrolled: number): void {
+  trackEvent('scroll_depth_reached', {
     event_category: 'engagement',
-    event_label: source,
-    whatsapp_message: message?.slice(0, 100) ?? '',
+    event_label: `Scroll ${percentScrolled}%`,
+    percent_scrolled: percentScrolled,
   });
 }
 
 /**
- * Click en un plan de precios.
+ * Tiempo de lectura / Engagement Heartbeat.
+ */
+export function trackEngagementTime(secondsSpent: number): void {
+  trackEvent('engagement_time', {
+    event_category: 'engagement',
+    event_label: `Time > ${secondsSpent}s`,
+    time_spent_seconds: secondsSpent,
+  });
+}
+
+/**
+ * Abrir/Cerrar FAQs - Para saber qué dudas tienen más.
+ */
+export function trackFAQToggle(questionTitle: string, action: 'open' | 'close'): void {
+  trackEvent('faq_toggle', {
+    event_category: 'engagement',
+    event_label: questionTitle,
+    action: action,
+  });
+}
+
+// ── Eventos específicos del negocio ──────────────────────────────────────────
+
+/**
+ * Click a WhatsApp — el evento más importante (macro-conversion).
+ * @param source  Dónde estaba el botón: 'floating_button' | 'cta_section' | 'hero' | 'header' | 'pricing'
+ * @param message Texto pre-cargado en el chat
+ * @param buttonText Texto del botón disparador
+ */
+export function trackWhatsAppClick(source: string, message?: string, buttonText?: string): void {
+  trackEvent('whatsapp_click', {
+    event_category: 'conversion',
+    event_label: source,
+    whatsapp_message: message?.slice(0, 100) ?? '',
+    button_text: buttonText ?? '',
+  });
+}
+
+/**
+ * Click en un plan de precios (macro-conversion intent).
  * @param planName  'Inicio' | 'Profesional' | 'Premium'
  * @param planPrice 'ARS 50.000' | etc.
+ * @param billingCycle 'mensual' | 'anual'
  */
-export function trackPlanClick(planName: string, planPrice: string): void {
+export function trackPlanClick(planName: string, planPrice: string, billingCycle: string = 'mensual'): void {
   trackEvent('select_plan', {
     event_category: 'conversion',
     event_label: planName,
     plan_name: planName,
     plan_price: planPrice,
+    billing_cycle: billingCycle,
     currency: 'ARS',
   });
 }
 
 /**
- * Click en CTA del Hero o secciones internas.
+ * Click en CTA del Hero o secciones internas (micro-conversion).
  * @param ctaText   Texto del botón clickeado
  * @param section   Nombre de la sección donde estaba el CTA
  */

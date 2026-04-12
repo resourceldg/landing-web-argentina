@@ -52,7 +52,7 @@ export default function CTASection({
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a href={whatsappUrl} target="_blank" rel="noopener noreferrer"
-            onClick={() => trackWhatsAppClick('cta_primary', whatsappMessage)}
+            onClick={() => trackWhatsAppClick('cta_primary', whatsappMessage, ctaText)}
           >
             <Button 
               size="lg" 
@@ -68,7 +68,7 @@ export default function CTASection({
           </a>
           
           <a href={whatsappUrl} target="_blank" rel="noopener noreferrer"
-            onClick={() => trackWhatsAppClick('cta_secondary', whatsappMessage)}
+            onClick={() => trackWhatsAppClick('cta_secondary', whatsappMessage, secondaryCta)}
           >
             <Button 
               size="lg" 

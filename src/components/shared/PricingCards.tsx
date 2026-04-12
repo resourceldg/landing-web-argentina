@@ -225,7 +225,7 @@ export default function PricingCards({
                       ))}
                     </ul>
                     <a href={waUrl} target="_blank" rel="noopener noreferrer" className="block"
-                      onClick={() => trackPlanClick(plan.name, plan.price)}
+                      onClick={() => trackPlanClick(plan.name, plan.price, 'unico')}
                     >
                       <Button
                         className={`w-full py-5 rounded-xl font-semibold ${
@@ -303,7 +303,7 @@ export default function PricingCards({
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block"
-                onClick={() => trackPlanClick(plan.name, plan.price)}
+                onClick={() => trackPlanClick(plan.name, plan.price, 'unico')}
               >
                 <Button
                   className={`w-full py-6 rounded-xl font-semibold ${
