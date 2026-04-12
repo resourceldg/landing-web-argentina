@@ -1,4 +1,4 @@
-import { Phone, MapPin, Mail, Check, Star, MessageCircle, Apple, Heart, TrendingUp } from 'lucide-react';
+import { MapPin, Mail, Check, Star, MessageCircle, Apple, Heart, TrendingUp } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import ExamplesNav from './ExamplesNav';
@@ -244,11 +244,7 @@ export default function NutricionistaExample() {
               </Button>
             </a>
           </div>
-          <div className="grid sm:grid-cols-3 gap-6 text-green-100">
-            <div className="flex flex-col items-center gap-2">
-              <Phone className="w-6 h-6" />
-              <span>+54 223 620-2061</span>
-            </div>
+          <div className="grid sm:grid-cols-2 gap-6 text-green-100 max-w-sm mx-auto">
             <div className="flex flex-col items-center gap-2">
               <Mail className="w-6 h-6" />
               <span>contacto@nutricion-ejemplo.com</span>

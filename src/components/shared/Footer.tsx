@@ -1,4 +1,4 @@
-import { Phone, Mail, MapPin, Instagram, Linkedin } from 'lucide-react';
+import { Mail, MapPin, Instagram, Linkedin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export default function Footer() {
@@ -54,17 +54,6 @@ export default function Footer() {
           <div>
             <h4 className="font-semibold text-white mb-4">Contacto</h4>
             <ul className="space-y-3">
-              <li className="flex items-center gap-3">
-                <Phone className="w-5 h-5 text-blue-500 flex-shrink-0" />
-                <a
-                  href="https://wa.me/542236202061"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-blue-400 transition-colors"
-                >
-                  +54 223 620-2061
-                </a>
-              </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-blue-500 flex-shrink-0" />
                 <a

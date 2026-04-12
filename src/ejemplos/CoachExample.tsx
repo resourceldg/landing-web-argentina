@@ -1,4 +1,4 @@
-import { Phone, MapPin, Mail, Check, Star, MessageCircle, Target, Users, Lightbulb, TrendingUp, Calendar, Award } from 'lucide-react';
+import { MapPin, Mail, Check, Star, MessageCircle, Target, Users, Lightbulb, TrendingUp, Calendar, Award } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import ExamplesNav from './ExamplesNav';
@@ -233,11 +233,7 @@ export default function CoachExample() {
               Agendar sesión gratuita
             </Button>
           </a>
-          <div className="grid sm:grid-cols-3 gap-6 text-purple-100 mt-8">
-            <div className="flex flex-col items-center gap-2">
-              <Phone className="w-6 h-6" />
-              <span>+54 223 620-2061</span>
-            </div>
+          <div className="grid sm:grid-cols-2 gap-6 text-purple-100 mt-8 max-w-sm mx-auto">
             <div className="flex flex-col items-center gap-2">
               <Mail className="w-6 h-6" />
               <span>contacto@coach-ejemplo.com</span>
