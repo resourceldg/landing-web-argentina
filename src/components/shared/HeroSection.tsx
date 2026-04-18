@@ -57,7 +57,10 @@ export default function HeroSection({
           className="w-full h-full object-cover object-top grayscale"
           loading="eager"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-900/70 via-slate-900/75 to-slate-900/92" />
+        {/* Capa base uniforme para apagar el texto de la imagen */}
+        <div className="absolute inset-0 bg-slate-900/60" />
+        {/* Capa de gradiente: clara arriba (se ven las caras), casi sólida abajo */}
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-900/30 via-slate-900/75 to-black/95" />
       </div>
 
       {/* ── DESKTOP: decoraciones de fondo ── */}
