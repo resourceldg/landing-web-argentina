@@ -9,3 +9,4 @@ export { default as PricingSection } from './PricingSection';
 export { default as PricingCards } from './PricingCards';
 export { default as FAQSection } from './FAQSection';
 export { default as CTASection } from './CTASection';
+export { default as SocialProofSection } from './SocialProofSection';

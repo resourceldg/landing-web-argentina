@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { trackWhatsAppClick } from '@/lib/analytics';
 
 interface HeaderProps {
   variant?: 'light' | 'dark';
@@ -39,7 +40,8 @@ export default function Header({
     setIsMobileMenuOpen(false);
   };
 
-  const whatsappUrl = 'https://wa.me/542236202061?text=Hola!%20Quiero%20mi%20web%20personal.';
+  const WA_MSG = 'Hola! Vi tu anuncio y quiero consultar sobre la web. ¿Qué opciones tienen?';
+  const whatsappUrl = `https://wa.me/542236202061?text=${encodeURIComponent(WA_MSG)}`;
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${bgClass}`}>
@@ -68,16 +70,19 @@ export default function Header({
 
           {/* CTA Buttons */}
           <div className="hidden lg:flex items-center gap-3">
-            <a 
+            {/* Ghost WhatsApp — siempre apunta a WA con tracking */}
+            <a
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackWhatsAppClick('header_whatsapp', WA_MSG, 'WhatsApp')}
             >
               <Button variant="ghost" size="sm" className="gap-2">
                 <MessageCircle className="w-4 h-4" />
                 WhatsApp
               </Button>
             </a>
+            {/* CTA principal — usa ctaLink para compatibilidad con otras landings */}
             <a href={ctaLink}>
               <Button size="sm" className="bg-blue-600 hover:bg-blue-700">
                 {ctaText}
@@ -112,11 +117,12 @@ export default function Header({
                 FAQ
               </button>
               <hr className="my-2" />
-              <a 
+              <a
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 px-4 py-3 rounded-lg hover:bg-slate-100 text-slate-700 font-medium"
+                onClick={() => trackWhatsAppClick('header_mobile_whatsapp', WA_MSG, 'WhatsApp')}
               >
                 <MessageCircle className="w-4 h-4" />
                 WhatsApp

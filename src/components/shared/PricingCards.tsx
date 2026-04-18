@@ -108,38 +108,6 @@ export default function PricingCards({
           </p>
         </div>
 
-        {/* Simple promise block */}
-        <div className="bg-blue-600 rounded-2xl p-6 lg:p-8 mb-10 lg:mb-12 text-center">
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8">
-            <div className="flex items-center gap-3">
-              <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
-                <MessageCircle className="w-6 h-6 text-white" />
-              </div>
-              <div className="text-left">
-                <div className="text-white font-semibold">Charlamos</div>
-              </div>
-            </div>
-            <div className="hidden sm:block text-white/50 text-2xl">→</div>
-            <div className="flex items-center gap-3">
-              <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
-                <Zap className="w-6 h-6 text-white" />
-              </div>
-              <div className="text-left">
-                <div className="text-white font-semibold">Me contás qué hacés</div>
-              </div>
-            </div>
-            <div className="hidden sm:block text-white/50 text-2xl">→</div>
-            <div className="flex items-center gap-3">
-              <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center">
-                <Check className="w-6 h-6 text-blue-600" />
-              </div>
-              <div className="text-left">
-                <div className="text-white font-bold">Tu web lista</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
         {/* ── MOBILE: acordeón de planes ── */}
         <div className="lg:hidden space-y-3">
           {defaultPlans.map((plan, index) => {

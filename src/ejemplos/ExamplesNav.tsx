@@ -33,16 +33,16 @@ export default function ExamplesNav({
 
   return (
     <>
-      {/* Banner superior */}
+      {/* Banner superior — deja claro que es un demo, con precio unificado */}
       <div className="bg-slate-900 text-white text-center py-2 text-sm">
-        <span className="opacity-75">Este es un ejemplo de web — </span>
+        <span className="opacity-75">Ejemplo de web · Todas desde ARS 50.000 — </span>
         <a
           href={whatsappUrl}
           target="_blank"
           rel="noopener noreferrer"
           className="underline font-semibold hover:text-blue-300"
         >
-          Quiero una como esta
+          Quiero la mía
         </a>
       </div>
 

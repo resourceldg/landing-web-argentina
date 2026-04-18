@@ -6,6 +6,9 @@ declare global {
   interface Window {
     gtag: (...args: unknown[]) => void;
     dataLayer: unknown[];
+    // Meta Pixel
+    fbq: (command: string, event: string, params?: Record<string, unknown>) => void;
+    _fbq: unknown;
   }
 }
 
@@ -90,18 +93,37 @@ export function trackFAQToggle(questionTitle: string, action: 'open' | 'close'):
 // ── Eventos específicos del negocio ──────────────────────────────────────────
 
 /**
+ * Dispara un evento en Meta Pixel (fbq).
+ * Silencia el error si el Pixel no está cargado.
+ */
+export function trackMetaPixelEvent(eventName: string, params?: Record<string, unknown>): void {
+  if (typeof window.fbq === 'function') {
+    window.fbq('track', eventName, params ?? {});
+  }
+}
+
+/**
  * Click a WhatsApp — el evento más importante (macro-conversion).
- * @param source  Dónde estaba el botón: 'floating_button' | 'cta_section' | 'hero' | 'header' | 'pricing'
+ * Dispara GA4 + Meta Pixel Contact.
+ *
+ * NO dispara Lead porque un click no es un lead calificado.
+ * Lead solo se dispara en trackPlanClick (intent explícito de compra).
+ *
+ * @param source  Dónde estaba el botón: 'floating_button' | 'cta_section' | 'hero_desktop' | 'hero_mobile' | 'header' | 'pricing' | 'social_proof_cta'
  * @param message Texto pre-cargado en el chat
  * @param buttonText Texto del botón disparador
  */
 export function trackWhatsAppClick(source: string, message?: string, buttonText?: string): void {
+  // GA4
   trackEvent('whatsapp_click', {
     event_category: 'conversion',
     event_label: source,
     whatsapp_message: message?.slice(0, 100) ?? '',
     button_text: buttonText ?? '',
   });
+  // Meta Pixel Contact — señal de intención de contacto
+  // No es Lead porque un click no garantiza que la persona haya enviado un mensaje
+  trackMetaPixelEvent('Contact', { source, button_text: buttonText ?? '' });
 }
 
 /**
@@ -111,6 +133,7 @@ export function trackWhatsAppClick(source: string, message?: string, buttonText?
  * @param billingCycle 'mensual' | 'anual'
  */
 export function trackPlanClick(planName: string, planPrice: string, billingCycle: string = 'mensual'): void {
+  // GA4
   trackEvent('select_plan', {
     event_category: 'conversion',
     event_label: planName,
@@ -119,6 +142,8 @@ export function trackPlanClick(planName: string, planPrice: string, billingCycle
     billing_cycle: billingCycle,
     currency: 'ARS',
   });
+  // Meta Pixel Lead — acá sí hay intent explícito: el usuario eligió un plan y fue a WhatsApp
+  trackMetaPixelEvent('Lead', { plan_name: planName, plan_price: planPrice });
 }
 
 /**
@@ -132,4 +157,81 @@ export function trackCTAClick(ctaText: string, section: string): void {
     event_label: ctaText,
     section,
   });
+}
+
+// ── UTM Persistence ──────────────────────────────────────────────────────────
+// Guarda los UTMs de la URL en localStorage para atribuir correctamente
+// el gasto publicitario cuando el usuario convierte más tarde.
+const UTM_STORAGE_KEY = 'webexpress_utms';
+const UTM_PARAMS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'fbclid'];
+
+/**
+ * Lee los UTMs de la URL actual y los guarda en localStorage.
+ * Llamar una vez al cargar la página.
+ */
+export function captureAndPersistUTMs(): void {
+  const searchParams = new URLSearchParams(window.location.search);
+  const captured: Record<string, string> = {};
+
+  UTM_PARAMS.forEach(param => {
+    const value = searchParams.get(param);
+    if (value) captured[param] = value;
+  });
+
+  // Algunos deployments de SPA usan hash routing — también buscar en el hash
+  if (window.location.hash.includes('?')) {
+    const hashParams = new URLSearchParams(window.location.hash.split('?')[1]);
+    UTM_PARAMS.forEach(param => {
+      const value = hashParams.get(param);
+      if (value && !captured[param]) captured[param] = value;
+    });
+  }
+
+  if (Object.keys(captured).length > 0) {
+    try {
+      localStorage.setItem(UTM_STORAGE_KEY, JSON.stringify({
+        ...captured,
+        captured_at: new Date().toISOString(),
+        landing_path: window.location.href,
+      }));
+    } catch {
+      // localStorage puede no estar disponible en algunos contextos
+    }
+  }
+}
+
+/**
+ * Recupera los UTMs guardados en localStorage.
+ * Usarlos para adjuntar a formularios o mensajes de WhatsApp.
+ */
+export function getStoredUTMs(): Record<string, string> {
+  try {
+    const stored = localStorage.getItem(UTM_STORAGE_KEY);
+    if (!stored) return {};
+    const parsed = JSON.parse(stored) as Record<string, string>;
+    // Eliminar campos internos antes de devolver
+    const { captured_at: _ca, landing_path: _lp, ...utms } = parsed;
+    return utms;
+  } catch {
+    return {};
+  }
+}
+
+/**
+ * Construye la URL de WhatsApp adjuntando los UTMs almacenados al mensaje.
+ * Permite saber de qué campaña viene cada lead cuando contesta por WhatsApp.
+ */
+export function buildWhatsAppUrl(phone: string, message: string): string {
+  const utms = getStoredUTMs();
+  let fullMessage = message;
+
+  if (Object.keys(utms).length > 0) {
+    // Adjuntar source al mensaje para contexto en el chat
+    const source = utms.utm_source || utms.utm_medium || '';
+    if (source) {
+      fullMessage += ` [via ${source}]`;
+    }
+  }
+
+  return `https://wa.me/${phone}?text=${encodeURIComponent(fullMessage)}`;
 }

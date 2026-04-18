@@ -1,21 +1,33 @@
 import { useEffect, useRef } from 'react';
-import { trackScrollDepth, trackEngagementTime } from '../lib/analytics';
+import { trackScrollDepth, trackEngagementTime, captureAndPersistUTMs } from '../lib/analytics';
+
+/**
+ * Captura UTMs de la URL al montar la página y los guarda en localStorage.
+ * Llamar una vez por sesión (en GlobalAnalytics).
+ */
+export function useUTMCapture() {
+  useEffect(() => {
+    captureAndPersistUTMs();
+  }, []);
+}
 
 export function useScrollTracking() {
   const trackedDepths = useRef(new Set<number>());
+  // rAF handle para cancelar si el componente se desmonta
+  const rafHandle = useRef<number | null>(null);
+  // Flag para saber si ya hay un frame pendiente (throttle con rAF)
+  const pending = useRef(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      // Calcular porcentaje de scroll
+    const checkDepth = () => {
+      pending.current = false;
       const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
       const scrollPos = window.scrollY;
-      
+
       if (docHeight > 0) {
         const percentScrolled = Math.round((scrollPos / docHeight) * 100);
-        
-        // thresholds we care about
         const thresholds = [25, 50, 75, 90, 100];
-        
+
         for (const threshold of thresholds) {
           if (percentScrolled >= threshold && !trackedDepths.current.has(threshold)) {
             trackedDepths.current.add(threshold);
@@ -25,10 +37,19 @@ export function useScrollTracking() {
       }
     };
 
+    const handleScroll = () => {
+      // Un solo frame por evento de scroll — evita cálculos innecesarios
+      if (!pending.current) {
+        pending.current = true;
+        rafHandle.current = requestAnimationFrame(checkDepth);
+      }
+    };
+
     window.addEventListener('scroll', handleScroll, { passive: true });
-    
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
+      if (rafHandle.current !== null) cancelAnimationFrame(rafHandle.current);
     };
   }, []);
 }
