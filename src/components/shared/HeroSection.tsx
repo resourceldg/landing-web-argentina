@@ -52,7 +52,7 @@ export default function HeroSection({
       {/* ── MOBILE: imagen de fondo con overlay ── */}
       <div className="absolute inset-0 lg:hidden">
         <img
-          src="/profesional-web.jpg"
+          src="/clara hero.png"
           alt="Profesionales con su web personal"
           className="w-full h-full object-cover object-top grayscale"
           loading="eager"
@@ -266,7 +266,7 @@ export default function HeroSection({
             <div className="relative animate-float">
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
                 <img
-                  src="/profesional-web.jpg"
+                  src="/clara hero.png"
                   alt="Profesional mostrando su web personal"
                   className="w-full h-auto object-cover"
                   loading="eager"
