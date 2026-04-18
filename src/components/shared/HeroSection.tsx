@@ -1,4 +1,5 @@
-import { Play, Check, MessageCircle, Clock, Sparkles, Zap, Star, Shield } from 'lucide-react';
+import { Play, Check, MessageCircle, Clock, Sparkles, Zap, Star, Shield, Eye } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { trackWhatsAppClick, buildWhatsAppUrl } from '@/lib/analytics';
 
@@ -217,6 +218,18 @@ export default function HeroSection({
                   {secondaryCta}
                 </Button>
               </button>
+
+              {/* CTA terciario: Ver ejemplos */}
+              <Link to="/ejemplos">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-2 border-slate-200 text-slate-500 hover:border-slate-400 hover:text-slate-700 px-8 py-6 text-lg rounded-xl w-full sm:w-auto"
+                >
+                  <Eye className="w-5 h-5 mr-2" />
+                  Ver ejemplos
+                </Button>
+              </Link>
             </div>
 
             {/* Trust indicators desktop — sin avatares falsos */}
@@ -225,8 +238,8 @@ export default function HeroSection({
               <span>Garantía de satisfacción · +50 profesionales con su web</span>
             </div>
 
-            {/* CTA secundario mobile */}
-            <div className="flex lg:hidden">
+            {/* CTAs secundarios mobile */}
+            <div className="flex lg:hidden gap-3">
               <button onClick={scrollToPrecio} className="flex-1">
                 <Button
                   size="lg"
@@ -236,6 +249,15 @@ export default function HeroSection({
                   {secondaryCta}
                 </Button>
               </button>
+              <Link to="/ejemplos" className="flex-1">
+                <Button
+                  size="lg"
+                  className="w-full border-2 border-white/30 bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 px-4 py-4 text-sm rounded-xl"
+                >
+                  <Eye className="w-4 h-4 mr-2" />
+                  Ejemplos
+                </Button>
+              </Link>
             </div>
           </div>
 
