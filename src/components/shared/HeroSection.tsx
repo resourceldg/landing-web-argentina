@@ -49,19 +49,8 @@ export default function HeroSection({
   return (
     <section className="relative min-h-screen flex items-center pt-20 pb-16 overflow-hidden lg:bg-gradient-hero">
 
-      {/* ── MOBILE: imagen de fondo con overlay ── */}
-      <div className="absolute inset-0 lg:hidden">
-        <img
-          src="/clara hero.png"
-          alt="Profesionales con su web personal"
-          className="w-full h-full object-cover object-top grayscale"
-          loading="eager"
-        />
-        {/* Capa base uniforme para apagar el texto de la imagen */}
-        <div className="absolute inset-0 bg-slate-900/60" />
-        {/* Capa de gradiente: clara arriba (se ven las caras), casi sólida abajo */}
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-900/30 via-slate-900/75 to-black/95" />
-      </div>
+      {/* ── MOBILE: fondo degradé sólido, sin imagen (el creativo tiene texto propio que choca) ── */}
+      <div className="absolute inset-0 lg:hidden bg-gradient-to-br from-slate-900 via-slate-800 to-blue-950" />
 
       {/* ── DESKTOP: decoraciones de fondo ── */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none hidden lg:block">
