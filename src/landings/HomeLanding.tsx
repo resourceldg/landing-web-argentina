@@ -68,8 +68,8 @@ export default function HomeLanding() {
           badge="Precio de lanzamiento · Solo hasta el 30 de abril"
           title={
             <span>
-              No es profesional compartir tus{' '}
-              <RedesOrbit />
+              No es profesional compartir tus
+              <span className="inline-block mx-[1.5em]"><RedesOrbit /></span>
               <br />
               <span className="inline-block bg-amber-400 text-slate-900 px-3 py-1 rounded-md mt-1">Sé profesional</span>
               {' '}y compartí tu web
