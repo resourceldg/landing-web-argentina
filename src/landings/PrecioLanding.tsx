@@ -153,10 +153,10 @@ export default function PrecioLanding() {
         />
 
         {/* Final CTA */}
-        <CTASection 
+        <CTASection
           variant="dark"
-          title="Precios claros, entrega rápida, garantía real"
-          subtitle="Elegís tu plan y en horas tenés tu web online."
+          title="Sos profesional. Mostrate como tal."
+          subtitle="$50.000 pago único. Tu web lista hoy."
           ctaText="Charlemos"
           whatsappMessage="Hola! Me interesa la web. Charlamos?"
         />

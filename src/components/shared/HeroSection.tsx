@@ -5,7 +5,7 @@ import { trackWhatsAppClick, buildWhatsAppUrl } from '@/lib/analytics';
 
 interface HeroSectionProps {
   badge?: string;
-  title: string;
+  title: React.ReactNode;
   subtitle: string;
   description?: string;
   primaryCta: string;

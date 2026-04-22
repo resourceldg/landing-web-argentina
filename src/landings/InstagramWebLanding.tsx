@@ -145,10 +145,10 @@ export default function InstagramWebLanding() {
         />
 
         {/* Final CTA */}
-        <CTASection 
+        <CTASection
           variant="default"
-          title="Dejá de mandar solo tu Instagram"
-          subtitle="Tené un link serio y profesional para compartir con tus clientes."
+          title="Sos profesional. Mostrate como tal."
+          subtitle="Tené tu web ahora y dejá de compartir solo tu Instagram."
           ctaText="Charlemos"
           whatsappMessage="Hola! Tengo Instagram y quiero sumar una web. Charlamos?"
         />

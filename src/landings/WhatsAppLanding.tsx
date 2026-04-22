@@ -145,10 +145,10 @@ export default function WhatsAppLanding() {
         />
 
         {/* Final CTA */}
-        <CTASection 
+        <CTASection
           variant="gradient"
-          title="Convertí tu WhatsApp en una herramienta de ventas"
-          subtitle="Una web que trabaja 24/7 trayéndote consultas calificadas."
+          title="Sos profesional. Mostrate como tal."
+          subtitle="Tené tu web ahora y recibí más consultas por WhatsApp desde mañana."
           ctaText="Charlemos"
           whatsappMessage="Hola! Quiero una web para recibir más consultas. Charlamos?"
         />
