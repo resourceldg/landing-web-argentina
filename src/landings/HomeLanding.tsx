@@ -67,7 +67,7 @@ export default function HomeLanding() {
           badge="Precio de lanzamiento · Solo hasta el 30 de abril"
           title={
             <span>
-              <strong className="line-through opacity-70">No es profesional</strong> compartir tus redes
+              <strong className="underline decoration-red-500 text-red-400">No es profesional</strong> compartir tus redes
               <br />
               <span className="inline-block bg-amber-400 text-slate-900 px-3 py-1 rounded-md mt-1">Sé profesional</span>
               {' '}y compartí tu web
