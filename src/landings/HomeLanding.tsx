@@ -10,7 +10,6 @@ import {
   PricingCards,
   FAQSection,
   CTASection,
-  RedesOrbit
 } from '@/components/shared';
 
 // Mensaje pre-cargado en WhatsApp — específico y con intención comercial
@@ -68,8 +67,7 @@ export default function HomeLanding() {
           badge="Precio de lanzamiento · Solo hasta el 30 de abril"
           title={
             <span>
-              No es profesional compartir tus
-              <span className="inline-block mx-[1.4em]"><RedesOrbit /></span>
+              <strong className="line-through opacity-70">No es profesional</strong> compartir tus redes
               <br />
               <span className="inline-block bg-amber-400 text-slate-900 px-3 py-1 rounded-md mt-1">Sé profesional</span>
               {' '}y compartí tu web
