@@ -3,13 +3,14 @@ import { Button } from '@/components/ui/button';
 import { trackWhatsAppClick } from '@/lib/analytics';
 
 // ── REEMPLAZÁ estos placeholders con testimonios reales de clientes ──
-const testimonials: { name: string; role: string; city: string; text: string; result: string }[] = [
+const testimonials: { name: string; role: string; city: string; text: string; result: string; image: string }[] = [
   {
     name: 'Valeria Torres',
     role: 'Psicóloga',
     city: 'Buenos Aires',
     text: 'Tenía todo en Instagram y mis pacientes me pedían por dónde agendar. En el día me armaron la web y ya la tengo en mi firma de mail.',
     result: '3 consultas nuevas en la primera semana',
+    image: '/ejemplo-psicologa.jpg',
   },
   {
     name: 'Marcos Ibáñez',
@@ -17,6 +18,7 @@ const testimonials: { name: string; role: string; city: string; text: string; re
     city: 'Córdoba',
     text: 'Pensé que iba a ser un proceso largo y complicado. Me sorprendió lo rápido que fue. Mandé el logo y me explicaron qué hacía, y al otro día ya estaba online.',
     result: 'Web lista en menos de 24 horas',
+    image: '/ejemplo-contador.jpg',
   },
   {
     name: 'Lucía Fernández',
@@ -24,6 +26,7 @@ const testimonials: { name: string; role: string; city: string; text: string; re
     city: 'Rosario',
     text: 'Lo que más me gustó es que el botón de WhatsApp funciona perfecto. Mis clientes me escriben directo sin tener que buscar mi número en ningún lado.',
     result: '+40% de consultas por WhatsApp desde la web',
+    image: '/ejemplo-nutricionista.jpg',
   },
 ];
 
@@ -97,9 +100,11 @@ export default function SocialProofSection() {
                 ✓ {t.result}
               </div>
               <div className="flex items-center gap-3 pt-2 border-t border-slate-200">
-                <div className="w-9 h-9 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold text-sm flex-shrink-0">
-                  {t.name.charAt(0)}
-                </div>
+                <img
+                  src={t.image}
+                  alt={t.name}
+                  className="w-9 h-9 rounded-full object-cover flex-shrink-0"
+                />
                 <div>
                   <p className="font-semibold text-slate-900 text-sm">{t.name}</p>
                   <p className="text-slate-500 text-xs">{t.role} · {t.city}</p>
