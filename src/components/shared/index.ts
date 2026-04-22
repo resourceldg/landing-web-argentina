@@ -10,4 +10,3 @@ export { default as PricingCards } from './PricingCards';
 export { default as FAQSection } from './FAQSection';
 export { default as CTASection } from './CTASection';
 export { default as SocialProofSection } from './SocialProofSection';
-export { default as RedesOrbit } from './RedesOrbit';
