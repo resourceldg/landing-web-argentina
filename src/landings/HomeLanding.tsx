@@ -69,7 +69,7 @@ export default function HomeLanding() {
           title={
             <span>
               No es profesional compartir tus
-              <span className="inline-block mx-[2.5em]"><RedesOrbit /></span>
+              <span className="inline-block mx-[1.4em]"><RedesOrbit /></span>
               <br />
               <span className="inline-block bg-amber-400 text-slate-900 px-3 py-1 rounded-md mt-1">Sé profesional</span>
               {' '}y compartí tu web

@@ -143,7 +143,7 @@
 /* ── RedesOrbit — animación de logos orbitando la palabra "redes" ── */
 .redes-orbit {
   position: relative; display: inline-flex; align-items: center; justify-content: center;
-  width: 1.05em; height: 1.05em; font-size: inherit; color: inherit;
+  width: auto; height: 1.1em; font-size: inherit; color: inherit;
   vertical-align: middle; line-height: 1;
   --redes-orbit-w: 2.6em;
   --redes-orbit-h: 0.95em;
@@ -151,7 +151,8 @@
 }
 .redes-orbit__word {
   font-weight: inherit; font-size: inherit; letter-spacing: -.02em;
-  position: relative; z-index: 1; padding: 0 .05em;
+  position: relative; z-index: 2; padding: 0 .05em;
+  white-space: nowrap;
 }
 .redes-orbit__stage {
   position: absolute; top: 50%; left: 50%;
