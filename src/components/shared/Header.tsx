@@ -90,8 +90,20 @@ export default function Header({
             </a>
           </div>
 
+          {/* Mobile WhatsApp CTA — visible sin abrir el menú */}
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="lg:hidden flex items-center gap-1.5 bg-green-500 text-white text-xs font-bold px-3 py-2 rounded-lg mr-2"
+            onClick={() => trackWhatsAppClick('header_mobile_sticky_wa', WA_MSG, 'Escribinos')}
+          >
+            <MessageCircle className="w-3.5 h-3.5" />
+            Escribinos
+          </a>
+
           {/* Mobile Menu Button */}
-          <button 
+          <button
             className="lg:hidden p-2"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >

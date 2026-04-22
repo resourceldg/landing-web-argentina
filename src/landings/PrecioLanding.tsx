@@ -115,8 +115,8 @@ export default function PrecioLanding() {
         {/* Hero - Enfoque precio */}
         <HeroSection
           badge="Precios Claros"
-          title="Tu web profesional por menos de lo que sale un celular"
-          subtitle="Sin agencia, sin vueltas y sin presupuestos imposibles."
+          title="$50.000 pago único. Tu web profesional lista en el día."
+          subtitle="Sin agencia, sin costos mensuales, sin sorpresas."
           description="Tres planes claros: $50.000, $150.000, $300.000. Charlamos, me contás qué hacés, y en el día tenés tu web personal online. Ideal para profesionales independientes, monotributistas y emprendedores de servicios."
           primaryCta="Charlemos"
           secondaryCta="Ver planes"

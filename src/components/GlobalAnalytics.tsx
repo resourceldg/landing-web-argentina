@@ -1,10 +1,10 @@
-import { useScrollTracking, useEngagementTracking, useUTMCapture } from '../hooks/useAnalytics';
+import { useScrollTracking, useEngagementTracking, useUTMCapture, usePricingVisibility } from '../hooks/useAnalytics';
 
 export default function GlobalAnalytics() {
-  // Captura UTMs en el primer render para atribuir correctamente las conversiones
   useUTMCapture();
   useScrollTracking();
   useEngagementTracking();
+  usePricingVisibility();
 
   return null;
 }

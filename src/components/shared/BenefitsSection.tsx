@@ -18,32 +18,32 @@ const defaultBenefits: Benefit[] = [
   {
     icon: <Sparkles className="w-6 h-6" />,
     title: 'Presentación profesional',
-    description: 'Tu servicio se ve claro, ordenado y confiable desde el primer segundo.'
+    description: 'La primera impresión genera confianza: el visitante decide quedarse en vez de cerrar y buscar otro profesional.'
   },
   {
     icon: <Smartphone className="w-6 h-6" />,
     title: 'Botón directo a WhatsApp',
-    description: 'Tus clientes te escriben con un solo toque, sin buscar tu número.'
+    description: 'Tus clientes te escriben en el momento que deciden, sin tener que buscar tu número y perder el impulso.'
   },
   {
     icon: <Award className="w-6 h-6" />,
     title: 'Testimonios destacados',
-    description: 'Mostrá las opiniones de tus clientes satisfechos de forma elegante.'
+    description: 'Las opiniones de tus pacientes o clientes convencen a los indecisos mejor que cualquier argumento propio.'
   },
   {
     icon: <Shield className="w-6 h-6" />,
     title: 'Preguntas frecuentes',
-    description: 'Respondé las dudas comunes antes de que te escriban.'
+    description: 'El cliente llega convencido: las objeciones típicas están respondidas antes de que lleguen al botón de contacto.'
   },
   {
     icon: <TrendingUp className="w-6 h-6" />,
     title: 'Ubicación y contacto',
-    description: 'Tu dirección, horarios y todos los medios en un solo lugar.'
+    description: 'Nadie te llama para preguntar dónde quedás: toda la info que necesitan está a la vista antes de decidir.'
   },
   {
     icon: <Zap className="w-6 h-6" />,
     title: 'Imagen más confiable',
-    description: 'Transmitís profesionalismo y generás más confianza.'
+    description: 'Con web propia te separás de los que solo tienen Instagram — y eso se refleja en la calidad de consultas que recibís.'
   }
 ];
 

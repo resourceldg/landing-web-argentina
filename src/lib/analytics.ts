@@ -147,6 +147,42 @@ export function trackPlanClick(planName: string, planPrice: string, billingCycle
 }
 
 /**
+ * El usuario llegó a la sección #precio (IntersectionObserver, dispara una sola vez).
+ * Llamar desde usePricingVisibility.
+ */
+export function trackViewPricing(): void {
+  trackEvent('view_pricing', {
+    event_category: 'engagement',
+    event_label: 'pricing_section_visible',
+  });
+}
+
+/**
+ * El usuario expandió un plan en el acordeón mobile.
+ * @param planName 'Inicio' | 'Profesional' | 'Premium'
+ */
+export function trackExpandPlan(planName: string): void {
+  trackEvent('expand_plan', {
+    event_category: 'engagement',
+    event_label: planName,
+    plan_name: planName,
+  });
+}
+
+/**
+ * Hitos de scroll con nombre propio para usarlos como conversiones en GA4
+ * sin necesidad de filtros por parámetro.
+ * @param milestone 50 | 75
+ */
+export function trackScrollMilestone(milestone: 50 | 75): void {
+  trackEvent(`scroll_depth_${milestone}`, {
+    event_category: 'engagement',
+    event_label: `${milestone}%`,
+    percent_scrolled: milestone,
+  });
+}
+
+/**
  * Click en CTA del Hero o secciones internas (micro-conversion).
  * @param ctaText   Texto del botón clickeado
  * @param section   Nombre de la sección donde estaba el CTA

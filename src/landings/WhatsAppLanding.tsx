@@ -107,8 +107,8 @@ export default function WhatsAppLanding() {
         {/* Hero - Enfoque WhatsApp */}
         <HeroSection
           badge="Optimizada para WhatsApp"
-          title="Una web simple para que te escriban más por WhatsApp"
-          subtitle="Charlamos, me contás qué hacés, y en el día tenés tu web."
+          title="Tu número de WhatsApp no es tu presencia digital."
+          subtitle="Con una web, tus clientes te encuentran, te conocen y te escriben."
           description="Mostrá quién sos, qué hacés y cómo trabajás en una sola página que convierta visitas en consultas. Ideal para nutricionistas, coaches, kinesiólogos, esteticistas, odontólogos."
           primaryCta="Charlemos"
           secondaryCta="Ver planes"

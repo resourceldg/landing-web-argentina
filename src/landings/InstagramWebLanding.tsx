@@ -107,8 +107,8 @@ export default function InstagramWebLanding() {
         {/* Hero - De Instagram a Web */}
         <HeroSection
           badge="De Instagram a Web"
-          title="Tenés Instagram. Ahora te falta una web."
-          subtitle="Charlamos, me contás qué hacés, y en el día tenés tu web."
+          title="Tu Instagram no reemplaza una web. Arreglemos eso hoy."
+          subtitle="En el día. Desde $50.000. Sin vueltas."
           description="Convertí toda tu información en una página clara, seria y lista para compartir. Tu Instagram atrae, tu web convierte. En horas tenés tu web online."
           primaryCta="Charlemos"
           secondaryCta="Ver planes"

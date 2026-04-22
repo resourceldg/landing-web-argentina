@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Check, Star, Zap, Crown, ArrowRight, MessageCircle, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { trackPlanClick } from '@/lib/analytics';
+import { trackPlanClick, trackExpandPlan } from '@/lib/analytics';
 
 interface Plan {
   name: string;
@@ -32,7 +32,8 @@ const defaultPlans: Plan[] = [
       'Botón a WhatsApp',
       'Datos de contacto visibles',
       'Link listo para compartir',
-      'Entrega en el día'
+      'Entrega en el día',
+      '🛡 Garantía de satisfacción — si no quedás conforme, devolvemos el dinero'
     ],
     cta: 'Me interesa este plan',
     whatsappMessage: 'Hola! Me interesa el plan Inicio de $50.000. Charlamos?',
@@ -49,7 +50,8 @@ const defaultPlans: Plan[] = [
       'Perfil profesional',
       'Testimonios de clientes',
       'Preguntas frecuentes',
-      'Formulario de contacto'
+      'Formulario de contacto',
+      '🛡 Garantía de satisfacción — si no quedás conforme, devolvemos el dinero'
     ],
     cta: 'Quiero este plan',
     whatsappMessage: 'Hola! Me interesa el plan Profesional de $150.000. Charlamos?',
@@ -68,7 +70,8 @@ const defaultPlans: Plan[] = [
       'Estructura avanzada',
       'Múltiples llamadas a la acción',
       'Prioridad de entrega',
-      'Ajustes extra incluidos'
+      'Ajustes extra incluidos',
+      '🛡 Garantía de satisfacción — si no quedás conforme, devolvemos el dinero'
     ],
     cta: 'Quiero el plan premium',
     whatsappMessage: 'Hola! Me interesa el plan Premium de $300.000. Charlamos?',
@@ -85,7 +88,9 @@ export default function PricingCards({
   const [expandedIndex, setExpandedIndex] = useState<number>(1);
 
   const toggle = (index: number) => {
+    const opening = expandedIndex !== index;
     setExpandedIndex(prev => (prev === index ? -1 : index));
+    if (opening) trackExpandPlan(defaultPlans[index].name);
   };
 
   return (

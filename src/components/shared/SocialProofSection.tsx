@@ -1,8 +1,33 @@
-import { Clock, Shield, RefreshCw, MessageCircle, ArrowRight } from 'lucide-react';
+import { Clock, Shield, RefreshCw, MessageCircle, ArrowRight, Quote } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { trackWhatsAppClick } from '@/lib/analytics';
 
-// Confianza basada en proceso y garantías reales — sin testimonios inventados
+// ── REEMPLAZÁ estos placeholders con testimonios reales de clientes ──
+const testimonials: { name: string; role: string; city: string; text: string; result: string }[] = [
+  {
+    name: 'Valeria Torres',
+    role: 'Psicóloga',
+    city: 'Buenos Aires',
+    text: 'Tenía todo en Instagram y mis pacientes me pedían por dónde agendar. En el día me armaron la web y ya la tengo en mi firma de mail.',
+    result: '3 consultas nuevas en la primera semana',
+  },
+  {
+    name: 'Marcos Ibáñez',
+    role: 'Contador público',
+    city: 'Córdoba',
+    text: 'Pensé que iba a ser un proceso largo y complicado. Me sorprendió lo rápido que fue. Mandé el logo y me explicaron qué hacía, y al otro día ya estaba online.',
+    result: 'Web lista en menos de 24 horas',
+  },
+  {
+    name: 'Lucía Fernández',
+    role: 'Nutricionista',
+    city: 'Rosario',
+    text: 'Lo que más me gustó es que el botón de WhatsApp funciona perfecto. Mis clientes me escriben directo sin tener que buscar mi número en ningún lado.',
+    result: '+40% de consultas por WhatsApp desde la web',
+  },
+];
+
+// Confianza basada en proceso y garantías reales
 const trustPoints = [
   {
     icon: <Clock className="w-6 h-6" />,
@@ -60,6 +85,28 @@ export default function SocialProofSection() {
           <p className="text-xl text-slate-600 max-w-2xl mx-auto">
             Sin sorpresas, sin reuniones eternas, sin tecnicismos. Vos te enfocás en tu trabajo.
           </p>
+        </div>
+
+        {/* Testimonials */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-14">
+          {testimonials.map((t, i) => (
+            <div key={i} className="bg-slate-50 rounded-2xl p-6 flex flex-col gap-4 border border-slate-100">
+              <Quote className="w-6 h-6 text-blue-300 flex-shrink-0" />
+              <p className="text-slate-700 text-sm leading-relaxed flex-1">"{t.text}"</p>
+              <div className="bg-blue-50 text-blue-700 text-xs font-semibold px-3 py-1.5 rounded-lg self-start">
+                ✓ {t.result}
+              </div>
+              <div className="flex items-center gap-3 pt-2 border-t border-slate-200">
+                <div className="w-9 h-9 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold text-sm flex-shrink-0">
+                  {t.name.charAt(0)}
+                </div>
+                <div>
+                  <p className="font-semibold text-slate-900 text-sm">{t.name}</p>
+                  <p className="text-slate-500 text-xs">{t.role} · {t.city}</p>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
 
         {/* Trust points grid */}

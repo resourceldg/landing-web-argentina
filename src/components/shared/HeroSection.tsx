@@ -80,13 +80,12 @@ export default function HeroSection({
                     <p className="text-white/70 text-xs font-medium uppercase tracking-wider mb-1">Tu web profesional desde</p>
                     <div className="flex items-baseline gap-2">
                       <span className="text-5xl font-extrabold text-white">$50.000</span>
-                      <span className="text-white/60 text-sm line-through">$100.000</span>
                     </div>
-                    <p className="text-amber-300 text-sm font-semibold mt-1">Pago único · Sin cuotas mensuales</p>
+                    <p className="text-amber-300 text-sm font-semibold mt-1">Pago único · Hosting 1 año incluido</p>
                   </div>
                   <div className="text-right">
-                    <div className="bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-lg mb-1">-50% OFF</div>
-                    <div className="flex">
+                    <div className="bg-amber-400 text-amber-900 text-xs font-bold px-2 py-1 rounded-lg mb-1 leading-tight text-center">Precio<br/>lanzamiento</div>
+                    <div className="flex justify-end mt-1">
                       {[1,2,3,4,5].map(i => (
                         <Star key={i} className="w-3 h-3 text-amber-400 fill-amber-400" />
                       ))}

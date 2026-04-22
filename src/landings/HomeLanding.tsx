@@ -63,10 +63,16 @@ export default function HomeLanding() {
 
       <main>
         {/* 1. HERO — promesa clara + CTA WhatsApp con tracking */}
+        {/*
+          A/B H1 — activar una sola variante a la vez:
+          A) "Tu web lista hoy. Sin vueltas."
+          B) "Dejá de mandar solo tu Instagram. Tenés web en el día."  ← ACTIVA
+          C) "Más consultas desde mañana. Tu web lista hoy desde $50.000."
+        */}
         <HeroSection
-          badge="Precio especial de lanzamiento · 50% OFF"
-          title="Tu web profesional lista para generar más consultas"
-          subtitle="En el día. Sin vueltas. Desde $50.000."
+          badge="Precio de lanzamiento · Solo hasta el 30 de abril"
+          title="Dejá de mandar solo tu Instagram. Tenés web en el día."
+          subtitle="Desde $50.000. Pago único. Sin vueltas."
           description="Te armamos una página rápida, clara y orientada a conversión. Ideal para publicitar en Meta Ads y convertir visitantes en clientes reales."
           primaryCta="Quiero mi web ahora"
           secondaryCta="Ver planes"
@@ -79,23 +85,23 @@ export default function HomeLanding() {
         {/* 2. PAIN POINTS — el problema que resolvemos */}
         <PainPointsSection />
 
-        {/* 3. BENEFITS — la solución */}
+        {/* 3. PRICING — el precio accesible es el argumento principal: va temprano */}
+        <PricingCards
+          title="Elegí el plan que mejor va con tu momento"
+          subtitle="Desde una página simple hasta una web completa con todo incluido."
+        />
+
+        {/* 4. BENEFITS — la solución, ahora que ya saben el precio */}
         <BenefitsSection />
 
-        {/* 4. PROCESS — cómo funciona (antes estaba ausente en esta landing) */}
+        {/* 5. PROCESS — cómo funciona */}
         <ProcessSection
           title="En 4 pasos, tu web está online"
           subtitle="Sin reuniones largas ni formularios complicados"
         />
 
-        {/* 5. SOCIAL PROOF — confianza basada en proceso y garantías reales */}
+        {/* 6. SOCIAL PROOF — confianza y prueba social */}
         <SocialProofSection />
-
-        {/* 6. PRICING — ancla de precio + planes */}
-        <PricingCards
-          title="Elegí el plan que mejor va con tu momento"
-          subtitle="Desde una página simple hasta una web completa con todo incluido."
-        />
 
         {/* 7. FAQ — resolver objeciones */}
         <FAQSection

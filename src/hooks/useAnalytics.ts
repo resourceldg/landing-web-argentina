@@ -1,5 +1,11 @@
 import { useEffect, useRef } from 'react';
-import { trackScrollDepth, trackEngagementTime, captureAndPersistUTMs } from '../lib/analytics';
+import {
+  trackScrollDepth,
+  trackScrollMilestone,
+  trackEngagementTime,
+  trackViewPricing,
+  captureAndPersistUTMs,
+} from '../lib/analytics';
 
 /**
  * Captura UTMs de la URL al montar la página y los guarda en localStorage.
@@ -32,6 +38,10 @@ export function useScrollTracking() {
           if (percentScrolled >= threshold && !trackedDepths.current.has(threshold)) {
             trackedDepths.current.add(threshold);
             trackScrollDepth(threshold);
+            // Eventos con nombre propio para configurar como conversiones en GA4
+            if (threshold === 50 || threshold === 75) {
+              trackScrollMilestone(threshold);
+            }
           }
         }
       }
@@ -51,6 +61,30 @@ export function useScrollTracking() {
       window.removeEventListener('scroll', handleScroll);
       if (rafHandle.current !== null) cancelAnimationFrame(rafHandle.current);
     };
+  }, []);
+}
+
+/**
+ * Dispara view_pricing una sola vez cuando #precio entra en el viewport.
+ * Usa IntersectionObserver para no depender del scroll.
+ */
+export function usePricingVisibility() {
+  useEffect(() => {
+    const el = document.getElementById('precio');
+    if (!el || typeof IntersectionObserver === 'undefined') return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          trackViewPricing();
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
   }, []);
 }
 
