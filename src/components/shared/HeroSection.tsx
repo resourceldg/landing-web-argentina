@@ -127,7 +127,7 @@ export default function HeroSection({
             )}
 
             <div className="space-y-4">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-white lg:text-slate-900">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-snug text-white lg:text-slate-900">
                 {title}
               </h1>
               <p className="text-xl sm:text-2xl font-semibold text-amber-300 lg:text-blue-600">

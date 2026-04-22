@@ -73,9 +73,9 @@ export default function HomeLanding() {
           title={
             <span>
               No es profesional compartir tu{' '}
-              <IgIcon className="inline w-8 h-8 align-middle mx-0.5 text-pink-400 lg:text-pink-500" />
+              <IgIcon className="inline w-8 h-8 align-middle mx-1.5 text-pink-400 lg:text-pink-500" />
               <br />
-              <span className="bg-amber-400 text-slate-900 px-2 py-0.5 rounded-md">Sé profesional</span>
+              <span className="inline-block bg-amber-400 text-slate-900 px-3 py-1 rounded-md mt-1">Sé profesional</span>
               {' '}y compartí tu web
             </span>
           }
